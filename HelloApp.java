@@ -3,12 +3,13 @@
 // 
 // This version accepts zero or more command-line arguments. If names are
 // provided, the program uses an enhanced for loop to build a comma-separated
-// list and prints a single greeting. If no arguments are provided, it falls
-// back to "World". This demonstrates array handling, conditional logic, and
-// StringBuilder for building output.
+// list and uses substring() to remove the trailing delimiter before printing
+// a single greeting. If no arguments are provided, it falls back to "World".
+// This demonstrates array handling, conditional logic, StringBuilder, and
+// substring() for string cleanup.
 // 
 // @author Udbhav
-// @version 5
+// @version 6
 // 
 
 // 
@@ -19,24 +20,24 @@
 // 4. Enhanced For Loop - Iterates through all provided arguments
 // 5. Conditional Logic - Chooses between provided names and the default value
 // 6. StringBuilder - Efficiently builds the comma-separated name list
-// 7. System.out.println() - Standard output stream for printing
+// 7. substring() - Removes the trailing delimiter after the loop
+// 8. System.out.println() - Standard output stream for printing
 // 
 
 public class HelloApp {
     public static void main(String[] args) {
-        StringBuilder nameBuilder = new StringBuilder();
+        String names;
 
         if (args.length == 0) {
-            nameBuilder.append("World");
+            names = "World";
         } else {
+            StringBuilder nameBuilder = new StringBuilder();
             for (String name : args) {
-                if (nameBuilder.length() > 0) {
-                    nameBuilder.append(", ");
-                }
-                nameBuilder.append(name);
+                nameBuilder.append(name).append(", ");
             }
+            names = nameBuilder.substring(0, nameBuilder.length() - 2);
         }
 
-        System.out.println("Hello, " + nameBuilder + "!");
+        System.out.println("Hello, " + names + "!");
     }
 }
