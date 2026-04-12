@@ -2,14 +2,13 @@
 // or more command-line names.
 // 
 // This version accepts zero or more command-line arguments. If names are
-// provided, the program uses an enhanced for loop to build a comma-separated
-// list and uses substring() to remove the trailing delimiter before printing
-// a single greeting. If no arguments are provided, it falls back to "World".
-// This demonstrates array handling, conditional logic, StringBuilder, and
-// substring() for string cleanup.
+// provided, the program uses String.join() to concatenate names with a
+// comma-space delimiter and print a single greeting. If no arguments are
+// provided, it falls back to "World". This demonstrates array handling,
+// conditional logic, and built-in string joining utilities.
 // 
 // @author Udbhav
-// @version 6
+// @version 7
 // 
 
 // 
@@ -17,26 +16,15 @@
 // 1. Class Declaration - Defines a blueprint for objects
 // 2. Main Method - Entry point for program execution
 // 3. String Argument Array - Command-line arguments parameter
-// 4. Enhanced For Loop - Iterates through all provided arguments
+// 4. String.join() - Concatenates names with an automatic delimiter
 // 5. Conditional Logic - Chooses between provided names and the default value
-// 6. StringBuilder - Efficiently builds the comma-separated name list
-// 7. substring() - Removes the trailing delimiter after the loop
-// 8. System.out.println() - Standard output stream for printing
+// 6. Delimiter Management - Avoids trailing separators automatically
+// 7. System.out.println() - Standard output stream for printing
 // 
 
 public class HelloApp {
     public static void main(String[] args) {
-        String names;
-
-        if (args.length == 0) {
-            names = "World";
-        } else {
-            StringBuilder nameBuilder = new StringBuilder();
-            for (String name : args) {
-                nameBuilder.append(name).append(", ");
-            }
-            names = nameBuilder.substring(0, nameBuilder.length() - 2);
-        }
+        String names = (args.length == 0) ? "World" : String.join(", ", args);
 
         System.out.println("Hello, " + names + "!");
     }
